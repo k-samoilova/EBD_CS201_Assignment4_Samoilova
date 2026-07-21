@@ -39,3 +39,11 @@ for x in list_of_dictionaries:
     if category not in profit_of_category:
         profit_of_category[category] = 0
     profit_of_category[category] += x["net_profit"]
+
+average_profit = sum(profit_of_category.values()) / len(profit_of_category)
+
+successful_categories = {}
+for category in profit_of_category:
+    if profit_of_category[category] >= average_profit:
+        successful_categories[category] = profit_of_category[category]
+print(successful_categories)
