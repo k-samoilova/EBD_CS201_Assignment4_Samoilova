@@ -23,5 +23,9 @@ for a in dictionary:
         dictionary[a] = float(dictionary[a])
 
 for x in list_of_dictionaries:
-    x["net_profit"] = x["revenue"] - (x["revenue"] * dictionary[x["region"]]/100)
+    x["net_profit"] = round(x["revenue"] - (x["revenue"] * dictionary[x["region"]]/100),2)
 
+with open("cleaned_sales_updated.csv", "w", encoding="utf-8", newline='') as file:
+    writer = csv.DictWriter(file, fieldnames=list_of_dictionaries[0].keys())
+    writer.writeheader()
+    writer.writerows(list_of_dictionaries)
