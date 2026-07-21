@@ -57,3 +57,13 @@ import pandas as pd
 
 df = pd.DataFrame(sorted_successful_categories)
 print(df)
+
+import matplotlib.pyplot as plt
+
+cat = successful_categories.keys()
+prof = successful_categories.values()
+plt.bar(cat, prof, color="pink")
+plt.title("Best Categories")
+plt.xlabel("Category")
+plt.ylabel("Profit")
+plt.show()
