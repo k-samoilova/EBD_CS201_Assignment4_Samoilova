@@ -14,11 +14,14 @@ for x in list_of_dictionaries:
     if x["revenue"] == "N/A":
         x["revenue"] = 0
     x["quantity"] = int(x["quantity"])
-    x["revenue"] = int(x["revenue"])
+    x["revenue"] = float(x["revenue"])
 
 for a in dictionary:
     if dictionary[a] == "N/A":
         dictionary[a] = 0
     else:
-        dictionary[a] = int(dictionary[a])
+        dictionary[a] = float(dictionary[a])
+
+for x in list_of_dictionaries:
+    x["net_profit"] = x["revenue"] - (x["revenue"] * dictionary[x["region"]]/100)
 
