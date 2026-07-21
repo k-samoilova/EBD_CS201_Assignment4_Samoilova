@@ -16,6 +16,8 @@ for x in list_of_dictionaries:
     x["quantity"] = int(x["quantity"])
     x["revenue"] = float(x["revenue"])
 
+
+
 for a in dictionary:
     if dictionary[a] == "N/A":
         dictionary[a] = 0
@@ -23,9 +25,17 @@ for a in dictionary:
         dictionary[a] = float(dictionary[a])
 
 for x in list_of_dictionaries:
-    x["net_profit"] = round(x["revenue"] - (x["revenue"] * dictionary[x["region"]]/100),2)
+    x["net_profit"] = round(x["revenue"] - (x["revenue"] * (dictionary[x["region"]]/100)),2)
+
 
 with open("cleaned_sales_updated.csv", "w", encoding="utf-8", newline='') as file:
     writer = csv.DictWriter(file, fieldnames=list_of_dictionaries[0].keys())
     writer.writeheader()
     writer.writerows(list_of_dictionaries)
+
+profit_of_category = {}
+for x in list_of_dictionaries:
+    category  = x["product_category"]
+    if category not in profit_of_category:
+        profit_of_category[category] = 0
+    profit_of_category[category] += x["net_profit"]
