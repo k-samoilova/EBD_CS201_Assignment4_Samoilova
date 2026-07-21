@@ -52,3 +52,8 @@ sorted_successful_categories = sorted(successful_categories.items(), key = lambd
 
 with open("top_categories.json", "w", encoding="utf-8") as file:
     json.dump(sorted_successful_categories, file, indent=4)
+
+import pandas as pd
+
+df = pd.DataFrame(sorted_successful_categories)
+print(df)
