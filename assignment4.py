@@ -46,4 +46,5 @@ successful_categories = {}
 for category in profit_of_category:
     if profit_of_category[category] >= average_profit:
         successful_categories[category] = profit_of_category[category]
-print(successful_categories)
+
+sorted_successful_categories = sorted(successful_categories.items(), key = lambda x: x[1], reverse=True)
