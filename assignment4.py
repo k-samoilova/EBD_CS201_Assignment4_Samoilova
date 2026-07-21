@@ -39,6 +39,7 @@ for x in list_of_dictionaries:
     if category not in profit_of_category:
         profit_of_category[category] = 0
     profit_of_category[category] += x["net_profit"]
+    profit_of_category[category] = round(profit_of_category[category], 2)
 
 average_profit = sum(profit_of_category.values()) / len(profit_of_category)
 
@@ -48,3 +49,6 @@ for category in profit_of_category:
         successful_categories[category] = profit_of_category[category]
 
 sorted_successful_categories = sorted(successful_categories.items(), key = lambda x: x[1], reverse=True)
+
+with open("top_categories.json", "w", encoding="utf-8") as file:
+    json.dump(sorted_successful_categories, file, indent=4)
